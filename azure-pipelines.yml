@@ -17,6 +17,6 @@ steps:
 
 - script: |
     cd Web
-    npm install
+    npm ci
     npm run build
   displayName: 'Build Web'
