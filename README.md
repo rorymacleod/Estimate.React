@@ -1,2 +1,11 @@
-# Estimate.React
-Create PERT-style task estimates.
+# Introduction
+PERT-style task estimates, implemented in React.
+
+# Build
+
+# Test
+
+# Run
+
+# Release
+
