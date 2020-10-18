@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- master
+- trunk
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -12,10 +12,11 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '10.x'
+    versionSpec: '12.x'
   displayName: 'Install Node.js'
 
 - script: |
+    cd Web
     npm install
     npm run build
-  displayName: 'npm install and build'
+  displayName: 'Build Web'
