@@ -26,7 +26,9 @@ steps:
     path: $(npm_config_cache)
   displayName: Cache Node Modules
 
-- script: npm ci
+- script: |
+    npm config get cache
+    npm ci
   displayName: "Restore Node Modules"
   workingDirectory: Web
 
