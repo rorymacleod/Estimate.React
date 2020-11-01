@@ -1,16 +1,23 @@
 const path = require("path");
 const webpack = require("webpack");
 
+const isDevelopment = process.env.NODE_ENV !== 'production';
+
 module.exports = {
   entry: "./src/index.js",
-  mode: "development",
+  mode: isDevelopment ? 'development' : 'production',
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         loader: "babel-loader",
-        options: { presets: ["@babel/env"] }
+        options: { 
+          presets: ["@babel/env"],
+          plugins: [
+            isDevelopment && require.resolve('react-refresh/babel')
+          ].filter(Boolean)
+        }
       },
       {
         test: /\.s?css$/,
@@ -24,8 +31,8 @@ module.exports = {
   },
   resolve: { extensions: ["*", ".js", ".jsx"] },
   output: {
-    path: path.resolve(__dirname, "public/dist/"),
-    publicPath: "/dist/",
+    path: path.resolve(__dirname, isDevelopment ? "dist/" : "public/dist/"),
+    publicPath: isDevelopment ? "/dist/" : "/public/dist/",
     filename: "bundle.js"
   },
   devServer: {
@@ -34,5 +41,8 @@ module.exports = {
     publicPath: "http://localhost:3000/dist/",
     hotOnly: true
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    isDevelopment && new (require('@pmmmwh/react-refresh-webpack-plugin'))()
+  ].filter(Boolean)
 };

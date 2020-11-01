@@ -1,17 +1,17 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import NavBar from "react-bootstrap/NavBar";
+import Navbar from "react-bootstrap/Navbar";
 import TaskList from "./tasks/TaskList";
 
 export default function App() {
 
     return (
         <div>
-            <NavBar>
-                <NavBar.Brand href="/">
+            <Navbar>
+                <Navbar.Brand href="/">
                     Estimate
-                </NavBar.Brand>
-            </NavBar>
+                </Navbar.Brand>
+            </Navbar>
             <Container fluid>
                 <TaskList />
             </Container>
