@@ -4,6 +4,11 @@ import TaskListItem from "./TaskListItem";
 
 export default function TaskList() {
     const [tasks, setTasks] = useState(defaultTasks);
+    const [selectedTask, setSelectedTask] = useState(null);
+
+    function handleItemClick(e) {
+        setSelectedTask(e.task);
+    }
 
     return (
         <div>
@@ -18,7 +23,7 @@ export default function TaskList() {
                 </thead>
                 <tbody>
                     { tasks.map(task => (
-                        <TaskListItem key={task.id} task={task} />
+                        <TaskListItem key={task.id} task={task} selected={task === selectedTask} onClick={handleItemClick} />
                     ))}
                 </tbody>
             </Table>
