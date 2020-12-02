@@ -5,7 +5,6 @@ import "./styles/styles.scss"
 
 (function() {
     configureFirebase();
-    // configureFirebaseAuth();
     ReactDOM.render(<App />, document.getElementById("root"));
     
     function configureFirebase() {
@@ -24,29 +23,4 @@ import "./styles/styles.scss"
         firebase.analytics();
     }
 
-    function configureFirebaseAuth() {
-        var ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-        ui.start("#firebaseui-auth-container", {
-            callbacks: {
-                signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-                    // User successfully signed in.
-                    // Return type determines whether we continue the redirect automatically
-                    // or whether we leave that to developer to handle.
-                    return true;
-                },
-                uiShown: function() {
-                    // The widget is rendered.
-                    // Hide the loader.
-                    document.getElementById('loader').style.display = 'none';
-                }
-            },
-            signInFlow: "popup",
-            signInOptions: [
-              firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-            ],
-            tosUrl: "https://estimate.rorymacleod.com/terms",
-            privacyPolicyUrl: "https://estimate.rorymacleod.com/privacy"
-          });
-    }
 })();

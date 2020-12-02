@@ -39,9 +39,10 @@ module.exports = {
     contentBase: path.join(__dirname, "public/"),
     port: 3000,
     publicPath: "http://localhost:3000/dist/",
-    hotOnly: true
+    hotOnly: true,
+    historyApiFallback: true
   },
-  devtool: isDevelopment ? "eval-cheap-module-source-map" : "source-map",
+  devtool: isDevelopment ? "cheap-module-source-map" : "source-map",
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     isDevelopment && new (require('@pmmmwh/react-refresh-webpack-plugin'))()
