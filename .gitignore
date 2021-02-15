@@ -1,5 +1,4 @@
-/~$Estimates.xlsx
-/Estimates.xlsx
 /.history
 /.github
-node_modules
+/node_modules
+/build
